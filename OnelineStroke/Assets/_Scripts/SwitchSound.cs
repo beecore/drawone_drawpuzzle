@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwitchSound : MonoBehaviour
@@ -8,12 +6,14 @@ public class SwitchSound : MonoBehaviour
     public GameObject Toggle_Off_Sound;
     public GameObject Toggle_On_Music;
     public GameObject Toggle_Off_Music;
-    void Start()
+
+    private void Start()
     {
         ChangeMusic(Music.instance.IsEnabled());
         ChangeSound(Sound.instance.IsEnabled());
     }
-    void ChangeMusic(bool isEnabled)
+
+    private void ChangeMusic(bool isEnabled)
     {
         if (isEnabled)
         {
@@ -26,6 +26,7 @@ public class SwitchSound : MonoBehaviour
             Toggle_Off_Music.SetActive(true);
         }
     }
+
     public void ToggleMusic()
     {
         bool isEnabled = !Music.instance.IsEnabled();
@@ -39,7 +40,8 @@ public class SwitchSound : MonoBehaviour
         Sound.instance.SetEnabled(isEnabled);
         ChangeSound(isEnabled);
     }
-    void ChangeSound(bool isEnabled)
+
+    private void ChangeSound(bool isEnabled)
     {
         if (isEnabled)
         {

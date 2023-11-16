@@ -28,7 +28,6 @@ public class PathReader : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        Debug.Log("Hi baby");
         targetColliders = new List<GameObject>();
         line = linePath.GetComponent<LineRenderer>();
         connetedPaths = new Stack<GameObject>();
@@ -42,13 +41,15 @@ public class PathReader : MonoBehaviour
         readJson();
         createWay();
     }
+
     public void ResetScreen()
     {
         foreach (Transform tr in this.GetComponentsInChildren<Transform>())
         {
-           tr.gameObject.SetActive(false);
+            tr.gameObject.SetActive(false);
         }
     }
+
     private bool iSStatingFromRightPosition(Vector2 pos)
     {
         if (isStarted)
@@ -150,53 +151,32 @@ public class PathReader : MonoBehaviour
 #if UNITY_ANDROID
 
         // Handle screen touches.
-        //if (Input.touchCount > 0)
-        //{
-        //    Touch touch = Input.GetTouch(0);
-
-        //    // Move the cube if the screen has the finger moving.
-        //    if (touch.phase == TouchPhase.Began)
-        //    {
-        //        Vector3 pos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-        //        pos.z = 0;
-
-        //        bool iscanStart = !checkIfColliderCollider(pos);
-        //        if (iscanStart && iSStatingFromRightPosition(new Vector2(pos.x, pos.y)))
-        //        {
-        //            canStartLine(Vector3.zero);
-        //        }
-        //    }
-        //    else if (touch.phase == TouchPhase.Ended)
-        //    {
-        //        EndLine();
-        //    }
-        //    else if (touch.phase == TouchPhase.Moved)
-        //    {
-        //        MoveLine();
-        //    }
-        //}
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0)
         {
-            //Debug.Log("bat dau ve");
-            Vector3 pos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-            pos.z = 0;
+            Touch touch = Input.GetTouch(0);
 
-            bool iscanStart = !checkIfColliderCollider(pos);
-            if (iscanStart && iSStatingFromRightPosition(new Vector2(pos.x, pos.y)))
+            // Move the cube if the screen has the finger moving.
+            if (touch.phase == TouchPhase.Began)
             {
-                canStartLine(Vector3.zero);
+                Vector3 pos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+                pos.z = 0;
+
+                bool iscanStart = !checkIfColliderCollider(pos);
+                if (iscanStart && iSStatingFromRightPosition(new Vector2(pos.x, pos.y)))
+                {
+                    canStartLine(Vector3.zero);
+                }
+            }
+            else if (touch.phase == TouchPhase.Ended)
+            {
+                EndLine();
+            }
+            else if (touch.phase == TouchPhase.Moved)
+            {
+                MoveLine();
             }
         }
-        else if (Input.GetMouseButtonUp(0))
-        {
-            //Debug.Log("ket thuc ve");
-            EndLine();
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            //Debug.Log("ve lien tuc");
-            MoveLine();
-        }
+
 #else
 
            if (Input.GetMouseButtonDown(0))

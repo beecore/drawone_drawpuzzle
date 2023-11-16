@@ -1,21 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ScrollBackground : MonoBehaviour {
+public class ScrollBackground : MonoBehaviour
+{
+    public float scrollSpeed;
+    private Vector2 savedOffset;
 
-	public float scrollSpeed;
-	private Vector2 savedOffset;
-
-	void Start ()
+    private void Start()
     {
-		savedOffset = GetComponent<Renderer>().material.GetTextureOffset ("_MainTex");
-	}
+        savedOffset = GetComponent<Renderer>().material.GetTextureOffset("_MainTex");
+    }
 
-	void Update ()
+    private void Update()
     {
-		float x = Mathf.Repeat (Time.time * scrollSpeed, 1);
-		Vector2 offset = new Vector2 (x , savedOffset.y);
-		GetComponent<Renderer>().material.SetTextureOffset("_MainTex", offset);
-	}
+        float x = Mathf.Repeat(Time.time * scrollSpeed, 1);
+        Vector2 offset = new Vector2(x, savedOffset.y);
+        GetComponent<Renderer>().material.SetTextureOffset("_MainTex", offset);
+    }
 }

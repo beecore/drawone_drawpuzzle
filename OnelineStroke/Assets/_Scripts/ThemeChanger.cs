@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class Theme
@@ -10,8 +8,8 @@ public class Theme
     public Color lineColor;
 }
 
-public class ThemeChanger : MonoBehaviour {
-
+public class ThemeChanger : MonoBehaviour
+{
     public Theme[] themes;
     public static Theme current;
 

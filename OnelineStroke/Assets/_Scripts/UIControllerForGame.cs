@@ -2,7 +2,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class UIControllerForGame : MonoBehaviour
 {
@@ -65,7 +64,6 @@ public class UIControllerForGame : MonoBehaviour
     {
         settingUi.SetActive(false);
     }
-
 
     public void OpenStageMode()
     {
@@ -143,7 +141,6 @@ public class UIControllerForGame : MonoBehaviour
         Invoke("ShowWinUi", 2f);
     }
 
-
     public void OpenSetting(bool isActive)
     {
         settingUi.SetActive(isActive);
@@ -169,9 +166,9 @@ public class UIControllerForGame : MonoBehaviour
         UpdateHint();
         uiShop.SetActive(false);
     }
+
     public void ShowHints()
     {
-
         TextManger.instance.showHints();
     }
 }

@@ -26,12 +26,6 @@ public class PlayerData : MonoBehaviour
         set;
     }
 
-    //public int NumberOfHints
-    //{
-    //    get;
-    //    set;
-    //}
-
     public Dictionary<int, int> LEVELUNLOCKED
     {
         get;
@@ -110,55 +104,10 @@ public class PlayerData : MonoBehaviour
     {
         return CUtils.GetInt("hint", 0);
     }
+
     public void LoadData()
     {
-     
         CurrentLevel = CUtils.GetInt("level", 1);
-        //if (File.Exists(Application.persistentDataPath + "/userInfo3.dat"))
-        //{
-        //    BinaryFormatter bf = new BinaryFormatter();
-
-        //    FileStream f = File.Open(Application.persistentDataPath + "/userInfo3.dat", FileMode.Open);
-        //    PlayerDataObj userData = (PlayerDataObj)bf.Deserialize(f);
-
-        //    TotalLevelCrossed = userData.levelcross;
-        //    LEVELUNLOCKED = userData.currentLevel;
-        //    NumberOfHints = userData.totalhints;
-
-        //    f.Close();
-        //}
-        //else
-        //{
-        //    TotalLevelCrossed = new Dictionary<int, string>
-        //    {
-        //        { 1, "0" },
-        //        { 2, "0" },
-        //        { 3, "0" },
-        //        { 4, "0" },
-        //        { 5, "0" },
-        //        { 6, "0" },
-        //        { 7, "0" },
-        //        { 8, "0" },
-        //        { 9, "0" },
-        //        { 10, "0" }
-        //    };
-
-        //    CurrentLevel = 1;
-        //    NumberOfHints = 10;
-        //    LEVELUNLOCKED = new Dictionary<int, int>
-        //    {
-        //        { 1, 0 },
-        //        { 2, 0 },
-        //        { 3, 0 },
-        //        { 4, 0 },
-        //        { 5, 0 },
-        //        { 6, 0 },
-        //        { 7, 0 },
-        //        { 8, 0 },
-        //        { 9, 0 },
-        //        { 10, 0 }
-        //    };
-        //}
     }
 
     public void UnLockedLevelForWorld(int world)

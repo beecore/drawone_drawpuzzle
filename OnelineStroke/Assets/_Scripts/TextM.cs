@@ -1,56 +1,54 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class TextM : MonoBehaviour {
+public class TextM : MonoBehaviour
+{
+    private TextMesh tm;
+    private List<string> texts;
+    private int index;
+    private float duration;
+    private float startTime;
 
-	private TextMesh tm;
-	private List<string> texts;
-	private int index;
-	private float duration;
-	private float startTime;
-	// Use this for initialization
-	void Awake () {
-		texts = new List<string> ();
-		tm = GetComponent<TextMesh> ();
+    // Use this for initialization
+    private void Awake()
+    {
+        texts = new List<string>();
+        tm = GetComponent<TextMesh>();
 
+        duration = 0.8f;//after second change
+        startTime = Time.time;
+    }
 
-		duration = 0.8f;//after second change
-		startTime = Time.time;
+    // Update is called once per frame
+    private void Update()
+    {
+        float timePassed = Time.time - startTime;
+        if (timePassed > duration)
+        {
+            changeText();
+        }
+    }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public void addString(string str)
+    {
+        texts.Add(str);
+        changeText();
+    }
 
-		float timePassed = Time.time - startTime;
-		if (timePassed > duration) {
+    public void changeText()
+    {
+        startTime = Time.time;
 
-			changeText ();
-		}
-		
-	}
+        if (texts.Count == 0)
+            return;
 
-	public void addString(string str){
+        index++;
 
-		texts.Add (str);
-		changeText ();
-	}
+        if (index > (texts.Count - 1))
+        {
+            index = 0;
+        }
 
-	public void changeText(){
-
-		startTime = Time.time;
-
-		if (texts.Count == 0)
-			return;
-		
-		index++;
-
-		if (index > (texts.Count - 1)) {
-
-			index = 0;
-		}
-
-		tm.text = texts [index];
-	}
+        tm.text = texts[index];
+    }
 }

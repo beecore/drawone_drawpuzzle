@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class WaysUI : MonoBehaviour
@@ -14,7 +12,7 @@ public class WaysUI : MonoBehaviour
     private bool isConnected;
     private int connectTime;
 
-    void Start()
+    private void Start()
     {
         isConnected = false;
         connectTime = 0;

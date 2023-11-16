@@ -22,7 +22,6 @@ public class TextManger : MonoBehaviour
 
     public void showHints()
     {
-       
         int NumberOfHints = PlayerData.instance.GetHint();
         Debug.Log("NumberOfHints " + NumberOfHints);
         if (NumberOfHints <= 0)
@@ -41,7 +40,7 @@ public class TextManger : MonoBehaviour
         //2 mean show 4 , 5 ,6;
         //3 mean show 7, 8 , 9
         WaysUI[] allWays = GameObject.FindObjectsOfType<WaysUI>();
-       
+
         int count = allWays.Length;
         Debug.Log("createOrUpdateTextM count " + count);
         bool isAnyHintShown = false;
@@ -103,7 +102,6 @@ public class TextManger : MonoBehaviour
 
         if (isAnyHintShown)
         {
-          
             NumberOfHints -= 1;
             PlayerData.instance.SaveData(PlayerData.instance.Hint, NumberOfHints);
             GameObject.FindObjectOfType<UIControllerForGame>().UpdateHint();
@@ -188,6 +186,7 @@ public class TextManger : MonoBehaviour
             GameObject.FindObjectOfType<UIControllerForGame>().CloseShop();
         });
     }
+
     public void UpdateDialog_Level_Hint()
     {
         int NumberOfHints = PlayerData.instance.GetHint();

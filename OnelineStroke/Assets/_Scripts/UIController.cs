@@ -39,21 +39,8 @@ public class UIController : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
-        //if (mode == UIMODE.OPENPLAYSCREEN)
-        //{
-        //    EnablePlayScreen();
-        //}
-        //else if (mode == UIMODE.OPENWORLDSCREEN)
-        //{
-        //    EnableWorldScreen();
-        //}
-        //else if (mode == UIMODE.OPENLEVELSCREEN)
-        //{
-        //    EnableStageScreen(LevelData.worldSelected);
-        //}
-
         CUtils.ChangeGameMusic();
-        //txt_score.text = CUtils.GetInt("score",0).ToString();
+
     }
 
     public void CloseAdReward()
@@ -307,12 +294,13 @@ public class UIController : MonoBehaviour
     public void CloseShop()
     {
         shopUI.SetActive(false);
-
     }
+
     public void ShowAdReward()
     {
         Admanager.instance.Show_Get_Hint_level_AdReward();
     }
+
     public void OnShopClick()
     {
         //if (Purchaser.instance.isEnabled)
